@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <style>
+            .green {
+                color:green;
+            }
+
+            .red {
+                color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- <div>
+            <h1 id="hello-world">Hello World</h1>
+            <h2 class="my-text">text 1</h2>
+            <h2 class="my-text">text 2</h2>
+        </div> -->
+
+        <div id="text-container">
+
+        </div>
+
+        <div>
+            <div class="row" id="posts-container">
+
+            </div>
+        </div>
+
+        <div >
+            <div class="row" id="todos-container"> 
+
+            </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <script>   
+            // var h1Element = $("h1")
+            // console.log(h1Element)
+
+            // var helloWorld = $("#hello-world")
+            // console.log(helloWorld)
+
+            // var texts = $(".my-text")
+            // console.log(texts)
+            
+            var postsContainer = $("#posts-container")
+            var todosContainer = $("#todos-container")
+
+            // $.ajax({
+            //     url:"http://jsonplaceholder.typicode.com/posts",
+            //     success:function(res){
+            //         var data = res
+
+            //         for(ii = 0; ii < data.length; ii = ii + 1) {
+            //             var item = data[ii]
+            //             var title = item.title
+            //             var text = item.body
+
+            //             var titleRender = '<h5 class="card-title">' + title + '</h5>'
+            //             var textRender = '<p class="card-text">' + text + '</p>'
+            //             var contentRender = '<div class="card-body">' + titleRender + textRender + '</div>'
+            //             var cardRender = '<div class="card col-3">' + contentRender + "</div>"
+            //             postsContainer.append(cardRender)
+            //         }
+            //     }
+            // })
+
+            $.ajax({
+                url:"http://jsonplaceholder.typicode.com/todos",
+                success: function(res) {
+                    var data = res
+                    
+                    for(ii = 0; ii < data.length; ii = ii + 1) {
+                        var item = data[ii]
+                        var title = item.title
+                        var status = item.completed
+
+                        var titleRender = '<h5 class="card-title">' + title + '</h5>'
+                        var statusRender = '<p class="card-text">' + status + '</p>'
+                        var contentRender = '<div class="card-body">' + titleRender + statusRender + '</div>'
+                        var cardRender = '<div class="card col-3">' + contentRender + "</div>"
+                        todosContainer.append(cardRender)
+                    }
+                    
+
+                }
+            })
+
+            // $.ajax({
+            //     url:"http://jsonplaceholder.typicode.com/todos",
+            //     success:function(res){
+            //         var data = res
+                    
+            //         for(ii = 0; ii < data.length; ii = ii + 1) {
+            //             var item = data[ii]
+            //             var title = item.title
+            //             var status = item.completed
+            //             var color = 'red'
+
+            //             if(status === true) {
+            //                 status = ''
+            //                 color = 'green'
+            //             }
+
+            //             var titleRender = '<h1 class="' + color + '">' + title + '</h1>'
+            //             var statusRender = '<p>' + status + '</p>'
+            //             var contentRender = '<div class="content">' + titleRender + statusRender + '</div>'
+
+            //             todosContainer.append(contentRender)
+            //         }
+            //     }
+            // })
+
+            // $("#text-container").append("<p>some text</p>")
+        </script>
+
+    </body>
+</html>
